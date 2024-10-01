@@ -10255,10 +10255,11 @@
                     window.clearInterval(Play_streamCheckId);
                     Play_streamCheckId = window.setInterval(Play_PlayerCheck, Play_PlayerCheckInterval);
                 },
-                function() {
+                function(e) {
                     //errorCallback
                     console.log('Play_avplay.prepareAsync Live NOK:', 'date: ' + new Date());
                     console.log('Play_avplay.prepareAsync Live NOK:', 'counter: ' + Play_onPlayerCounter);
+                    console.log('Play_avplay.prepareAsync Live NOK:', 'error: ' + e);
 
                     Play_onPlayerCounter++;
                     if (Play_onPlayerCounter < 2) {
