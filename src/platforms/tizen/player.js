@@ -13,6 +13,7 @@
 
   var TW = global.TW;
   TW.platform = TW.platform || {};
+  var createHlsPlayer = TW.platform.createPlayer;
 
   var NATIVE_WIDTH = 1920;
   var NATIVE_HEIGHT = 1080;
@@ -45,6 +46,11 @@
   }
 
   function createPlayer(cb) {
+    if (createHlsPlayer && global.Hls && global.Hls.isSupported()) {
+      return createHlsPlayer(cb);
+    }
+    var video = global.document && global.document.getElementById('tw-video');
+    if (video) { video.style.display = 'none'; }
     var av = avplay();
     var qualities = ['Auto'];
     var trackIndex = [-1];     // quality index -> AVPlay VIDEO track index

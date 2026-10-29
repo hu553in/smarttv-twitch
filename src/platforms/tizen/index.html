@@ -11,6 +11,7 @@
        (composited beneath the WebView) shows through in the player scene. */
     html, body { width: 1920px; height: 1080px; background: transparent; }
     #tw-av-player { z-index: 0; }
+    #tw-video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; z-index: 0; }
     #app { transform: scale(1.5); transform-origin: 0 0; z-index: 1; }
   </style>
   <!-- Required for webapis.avplay -->
@@ -20,8 +21,11 @@
   <!-- AVPlay renders onto a hardware plane beneath the WebView. -->
   <object type="application/avplayer" id="tw-av-player"
           style="position:absolute;left:0;top:0;width:1920px;height:1080px;"></object>
+  <video id="tw-video" playsinline></video>
 
   <div id="app"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
 
   <!-- core (ordered) -->
   <script src="core/polyfill.js"></script>
@@ -62,6 +66,7 @@
   <script src="core/app.js"></script>
 
   <!-- tizen platform adapter -->
+  <script src="platform/hls-player.js"></script>
   <script src="platform/player.js"></script>
   <script src="platform/keys.js"></script>
   <script src="platform/system.js"></script>

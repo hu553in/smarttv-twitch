@@ -88,6 +88,9 @@ function build(platform, outDir) {
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.copyFileSync(path.join(pdir, e), dst);
   }
+  if (platform === 'tizen') {
+    fs.copyFileSync(path.join(SRC, 'platforms', 'tizenbrew', 'player.js'), path.join(out, 'platform', 'hls-player.js'));
+  }
   if (platform === 'web') {
     fs.copyFileSync(path.join(SRC, 'assets', 'icon', 'favicon.ico'), path.join(out, 'favicon.ico'));
   }
